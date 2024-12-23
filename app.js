@@ -4,9 +4,8 @@ import userRouter from "./routes/userRoute.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import connetDB from "./utils/connectDB.js";
-import CourseController from "./controllers/courseController.js";
 import courseRouter from "./routes/courseRoute.js";
-import { courseData } from "./data.js";
+import path from "path"
 import feedbackRoute from "./routes/feedbackRoute.js"
 import myCourseRouter from "./routes/myCourseRoute.js";
 import sendEmail from "./utils/emailSend/sendEmail.js";
@@ -15,6 +14,11 @@ const app = express();  //it return new Express() instace that have many propert
 const PORT = process.env.PORT || 8000;
 
 app.use(cors());//to allow client side to access 
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 //connect db connection
 connetDB();
@@ -57,8 +61,8 @@ app.use("/", myCourseRouter);
 
 
 //serve is listening at port 8000
-app.listen(8000, () => {
-    console.log("Server is Running at Port " + 8000);
+app.listen(PORT, () => {
+    
 })
 
 
