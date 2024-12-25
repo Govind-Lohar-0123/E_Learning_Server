@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import connetDB from "./utils/connectDB.js";
 import courseRouter from "./routes/courseRoute.js";
-import path from "path"
+
 import feedbackRoute from "./routes/feedbackRoute.js"
 import myCourseRouter from "./routes/myCourseRoute.js";
 import sendEmail from "./utils/emailSend/sendEmail.js";
@@ -13,19 +13,14 @@ dotenv.config();
 const app = express();  //it return new Express() instace that have many properties and function
 const PORT = process.env.PORT || 8000;
 
-import { fileURLToPath } from "url";
+app.use(cors({
+  origin: ["https://deploy-mern-lwhq.vercel.app"],
+  methods: ["POST", "GET","PUT","DELETE"],
+  credentials: true
+}));
 
-// Define __dirname manually
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 app.use(cors());//to allow client side to access 
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
 //connect db connection
 connetDB();
 
