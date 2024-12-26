@@ -5,17 +5,16 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import connetDB from "./utils/connectDB.js";
 import courseRouter from "./routes/courseRoute.js";
-import path from "path";
+
 import feedbackRoute from "./routes/feedbackRoute.js"
 import myCourseRouter from "./routes/myCourseRoute.js";
 import sendEmail from "./utils/emailSend/sendEmail.js";
-import { fileURLToPath } from 'url';
-import CourseController from "./controllers/courseController.js";
+
 dotenv.config();
 const app = express();  //it return new Express() instace that have many properties and function
 const PORT = process.env.PORT || 8000;
 
-
+app.use(cors());
 //connect db connection
 connetDB();
 
