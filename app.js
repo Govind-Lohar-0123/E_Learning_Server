@@ -13,11 +13,7 @@ dotenv.config();
 const app = express();  //it return new Express() instace that have many properties and function
 const PORT = process.env.PORT || 8000;
 
-app.use(cors({
-  origin: ["https://deploy-mern-lwhq.vercel.app"],
-  methods: ["POST", "GET","PUT","DELETE"],
-  credentials: true
-}));
+
 
 
 app.use(cors());//to allow client side to access 
