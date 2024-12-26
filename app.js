@@ -31,7 +31,7 @@ app.use("/", courseRouter);
 app.use("/", feedbackRoute);
 app.use("/", myCourseRouter);
 
-app.get("/",CourseController.getAllCourse);
+app.get("/",(req,res)=>res.send("Hello Vercer..."));
 
 
 
