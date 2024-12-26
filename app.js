@@ -16,14 +16,6 @@ const app = express();  //it return new Express() instace that have many propert
 const PORT = process.env.PORT || 8000;
 
 
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
-
 //connect db connection
 connetDB();
 
@@ -40,20 +32,6 @@ app.use("/", feedbackRoute);
 app.use("/", myCourseRouter);
 
 app.get("/",CourseController.getAllCourse);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
