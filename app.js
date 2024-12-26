@@ -24,20 +24,20 @@ app.use(bodyParser.json());
 //both bodyparse and expres.jsong middleware are same are used to parse means add the jsong data comming from 
 // resuqest into res.body so that we use data like res.body if we dont use any middleware it provide an error
 
-app.post("/send-email",sendEmail);
+app.post("/send-email", sendEmail);
 //Loading All Routes 
 app.use("/", userRouter);
 app.use("/", courseRouter);
 app.use("/", feedbackRoute);
 app.use("/", myCourseRouter);
 
-app.get("/",(req,res)=>res.send("Hello Vercer..."));
+app.get("/", (req, res) => res.send("Hello Vercer..."));
 
 
 
 //serve is listening at port 8000
 app.listen(PORT, () => {
-    
+
 })
 
 
