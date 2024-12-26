@@ -14,9 +14,15 @@ const app = express();  //it return new Express() instace that have many propert
 const PORT = process.env.PORT || 8000;
 
 
+const corsOptions = {
+    origin: 'https://e-learning-client.vercel.app', // Your frontend's URL
+    methods: 'GET,POST,PUT,DELETE', // Allowed HTTP methods
+    credentials: true // Allow cookies if necessary
+};
 
+app.use(cors(corsOptions));
 
-app.use(cors());//to allow client side to access 
+// app.use(cors());//to allow client side to access 
 //connect db connection
 connetDB();
 
