@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8000;
 
 const corsOptions = {
     origin: 'https://e-learning-client.vercel.app', // Your frontend's URL
-    methods: ['GET','POST,'PUT,'DELETE'], // Allowed HTTP methods
+    methods: ["GET","POST","PUT","DELETE"], // Allowed HTTP methods
     allowedHeaders:["Content-Type","Authorization"],
     credentials: true // Allow cookies if necessary
 };
