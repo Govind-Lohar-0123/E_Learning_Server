@@ -9,12 +9,14 @@ import path from "path";
 import feedbackRoute from "./routes/feedbackRoute.js"
 import myCourseRouter from "./routes/myCourseRoute.js";
 import sendEmail from "./utils/emailSend/sendEmail.js";
+import { fileURLToPath } from 'url';
+import CourseController from "./controllers/courseController.js";
 dotenv.config();
 const app = express();  //it return new Express() instace that have many properties and function
 const PORT = process.env.PORT || 8000;
 
 
-import { fileURLToPath } from 'url';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,17 +24,10 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(cors());//to allow client side to access 
 //connect db connection
 connetDB();
 
-//Add Data to DB
-// CourseController.addCourses(courseData);
-
-
-
-//Using Middleware
-// app.use(express.json());
+app.use(express.json());
 app.use(bodyParser.json());
 //both bodyparse and expres.jsong middleware are same are used to parse means add the jsong data comming from 
 // resuqest into res.body so that we use data like res.body if we dont use any middleware it provide an error
@@ -44,8 +39,7 @@ app.use("/", courseRouter);
 app.use("/", feedbackRoute);
 app.use("/", myCourseRouter);
 
-//send Email js
-
+app.get("/",CourseController.getAllCourse);
 
 
 
